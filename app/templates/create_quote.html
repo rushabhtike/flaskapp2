@@ -41,7 +41,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.date_requested(class="datepicker") }}
+                {{ form.date_requested(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -72,7 +72,9 @@
             </div>
         </fieldset>
         <div class="form-group">
-<!--            {{ form.get_price(class="btn btn-outline-info") }}-->
+<!--            <input type ="submit" name="action" value="Get Price">-->
+<!--            <input type ="submit" name="action" value="Get Quote">-->
+            {{ form.get_price(class="btn btn-outline-info") }}
             {{ form.get_quote(class="btn btn-outline-info" )}}
         </div>
     </form>

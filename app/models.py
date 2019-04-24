@@ -28,8 +28,8 @@ class Quote(db.Model):
     gallons_requested = db.Column(db.Float(), nullable=False)
     date_requested = db.Column(db.Text(), nullable=False, default=datetime.utcnow)
     delivery_address = db.Column(db.String(120), nullable=False)
-    suggested_price = db.Column(db.Float(), nullable=False)
-    total_amount_due = db.Column(db.Float(), nullable=False)
+    suggested_price = db.Column(db.Float(), nullable=True)
+    total_amount_due = db.Column(db.Float(), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     # user_profile_id = db.Column(db.Integer, db.ForeignKey('user_profile.id'), nullable=False)
