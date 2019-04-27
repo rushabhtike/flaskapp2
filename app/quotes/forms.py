@@ -16,10 +16,8 @@ from app.models import User, UserProfile
 class QuoteForm(FlaskForm):
     gallons_requested = FloatField('Gallons Requested', validators=[DataRequired()])
     delivery_address = StringField('Delivery Address', render_kw={'readonly': True})
-    date_requested = DateField('Date Requested', format='%Y-%m-%d')
-    suggested_price = FloatField('Suggested Price')
-    total_amount_due = FloatField('Total Amount Due')
+    date_requested = DateField('Date Requested', format='%Y-%m-%d',  validators=[DataRequired()])
+    suggested_price = StringField('Suggested Price', render_kw={'readonly': True})
+    total_amount_due = StringField('Total Amount Due', render_kw={'readonly': True})
     get_quote = SubmitField('Get Quote')
     get_price = SubmitField('Get Price')
-
-

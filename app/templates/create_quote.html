@@ -67,15 +67,15 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.total_amount_due(class="form-control form-control-lg") }}
+                {{ form.total_amount_due(class="form-control form-control-lg", id=myid) }}
                 {% endif %}
             </div>
         </fieldset>
         <div class="form-group">
-<!--            <input type ="submit" name="action" value="Get Price">-->
-<!--            <input type ="submit" name="action" value="Get Quote">-->
-            {{ form.get_price(class="btn btn-outline-info") }}
-            {{ form.get_quote(class="btn btn-outline-info" )}}
+            <!--            <input type ="submit" name="action" value="Get Price">-->
+            <!--            <input type ="submit" name="action" value="Get Quote">-->
+            {{ form.get_price(class="btn btn-outline-info", onclick="function1()")}}
+            {{ form.get_quote(class="btn btn-outline-info", disabled=True)}}
         </div>
     </form>
 </div>
