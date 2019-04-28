@@ -58,7 +58,14 @@ class UpdateAccountForm(FlaskForm):
     address_two = StringField('Address 2', validators=[Length(max=100)])
     city = StringField('City', validators=[InputRequired(), Length(max=100)])
     state = SelectField('State', choices=choices, validators=[InputRequired()])
-    zipcode = IntegerField('Zipcode', validators=[InputRequired()])
+    zipcode = StringField('Zipcode', validators=[InputRequired()])
+
+    def validate_zipcode(self, zipcode):
+        print(zipcode.data)
+        z = str(zipcode.data)
+        print(zipcode.data)
+        print(len(z))
+        if not (len(z) == 9 or len(z) == 5):
+            raise ValidationError('Zipcode should be either 5 or 9 digits')
 
     submit = SubmitField('Update')
-
