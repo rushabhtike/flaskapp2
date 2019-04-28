@@ -15,7 +15,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.gallons_requested(class="form-control form-control-lg") }}
+                {{ form.gallons_requested(class="form-control form-control-lg", id="number", placeholder="Please enter number of gallons") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -80,21 +80,26 @@
     </form>
 </div>
 <script>
+$(document).ready(function(){
 
-  $(document).ready(function(){
-    var myInput = document.getElementById("total_amount_due");
+  $("#number").keypress(function (e) {
+    //alert("going inside");
+    if(e.which != 46 && e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+
+      return false;}
+  });
+
+  var myInput = document.getElementById("total_amount_due");
     if(myInput.value==""){
-        alert(myInput);
-      $('#get_quote').attr("disabled", true);
-      }
+      $('#get_quote').attr("disabled", true);}
     else{
-        alert(myInput);
-      $('#get_quote').removeAttr("disabled");
-    }
+      $('#get_quote').removeAttr("disabled");}
+
   $("#get_price").click(function(){
   $('#get_quote').removeAttr("disabled");
 });
 });
+
 
 
 </script>

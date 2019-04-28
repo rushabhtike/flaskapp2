@@ -23,7 +23,7 @@ class QuoteForm(FlaskForm):
                                    validators=[DataRequired()])
     delivery_address = StringField('Delivery Address', render_kw={'readonly': True})
     date_requested = DateField('Date Requested', format='%Y-%m-%d', validators=[DataRequired()])
-    suggested_price = StringField('Suggested Price', render_kw={'readonly': True})
+    suggested_price = StringField('Suggested Price Per Gallon', render_kw={'readonly': True})
     total_amount_due = StringField('Total Amount Due', render_kw={'readonly': True})
     get_quote = SubmitField('Get Quote')
     get_price = SubmitField('Get Price')

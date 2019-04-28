@@ -78,8 +78,8 @@ def new_quote():
             gallons = request.form['gallons_requested']
             suggestedprice = float(currentprice) + margin
             totalamt = float(gallons) * suggestedprice
-            form.suggested_price.data = suggestedprice
-            form.total_amount_due.data = totalamt
+            form.suggested_price.data = round(suggestedprice, 2)
+            form.total_amount_due.data = round(totalamt, 2)
             form.get_quote.disabled = False
 
             return render_template('create_quote.html', title='New Quote', form=form)
