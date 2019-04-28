@@ -8,7 +8,7 @@
             <div class="form-group">
                 {{ form.gallons_requested.label(class="form-control-label") }}
                 {% if form.gallons_requested.errors %}
-                {{ form.gallons_requested(class="form-control form-control-lg is-invalid", type="number") }}
+                {{ form.gallons_requested(class="form-control form-control-lg is-invalid") }}
                 <div class="invalid-feedback">
                     {% for error in form.gallons_requested.errors %}
                     <span>{{ error }}</span>
@@ -67,16 +67,35 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.total_amount_due(class="form-control form-control-lg", id=myid) }}
+                {{ form.total_amount_due(class="form-control form-control-lg", id="total_amount_due") }}
                 {% endif %}
             </div>
         </fieldset>
         <div class="form-group">
             <!--            <input type ="submit" name="action" value="Get Price">-->
             <!--            <input type ="submit" name="action" value="Get Quote">-->
-            {{ form.get_price(class="btn btn-outline-info", onclick="function1()")}}
-            {{ form.get_quote(class="btn btn-outline-info", disabled=True)}}
+            {{ form.get_price(class="btn btn-outline-info", id="get_price")}}
+            {{ form.get_quote(class="btn btn-outline-info", id="get_quote")}}
         </div>
     </form>
 </div>
+<script>
+
+  $(document).ready(function(){
+    var myInput = document.getElementById("total_amount_due");
+    if(myInput.value==""){
+        alert(myInput);
+      $('#get_quote').attr("disabled", true);
+      }
+    else{
+        alert(myInput);
+      $('#get_quote').removeAttr("disabled");
+    }
+  $("#get_price").click(function(){
+  $('#get_quote').removeAttr("disabled");
+});
+});
+
+
+</script>
 {% endblock content %}

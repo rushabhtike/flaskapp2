@@ -1,9 +1,13 @@
-function function1()
-{
+ $(document).ready(function(){
     var myInput = document.getElementById("total_amount_due");
-    check=parseFloat(myInput.value);
-    if(check=>0){
-    document.getElementById('get_quote').removeAttribute('disabled');
-    }
+    if(myInput==null){
 
-}
+      $('#get_quote').attr("disabled", true);}
+    else{
+      
+      $('#get_quote').removeAttr("disabled");
+    }
+  $("#get_price").click(function(){
+  $('#get_quote').removeAttr("disabled");
+});
+});
