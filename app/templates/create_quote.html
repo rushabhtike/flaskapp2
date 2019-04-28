@@ -8,7 +8,7 @@
             <div class="form-group">
                 {{ form.gallons_requested.label(class="form-control-label") }}
                 {% if form.gallons_requested.errors %}
-                {{ form.gallons_requested(class="form-control form-control-lg is-invalid") }}
+                {{ form.gallons_requested(class="form-control form-control-lg is-invalid", type="number") }}
                 <div class="invalid-feedback">
                     {% for error in form.gallons_requested.errors %}
                     <span>{{ error }}</span>

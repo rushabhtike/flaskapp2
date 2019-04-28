@@ -15,7 +15,8 @@ def new_quote():
 
     else:
         form = QuoteForm()
-        form.get_quote.disabled = True
+        # if form.validate_on_submit():
+        # form.get_quote.disabled = True
         if request.method == 'GET':
             form.delivery_address.data = current_user.user_profile.address_one + ' ' + current_user.user_profile.address_two  # current_user.user_profile.address_one
             return render_template('create_quote.html', title='New Quote', form=form)
@@ -36,6 +37,7 @@ def new_quote():
             flash('Your quote has been saved', 'success')
             return redirect(url_for('main.home'))
         elif form.get_price.data:
+            # if form.validate_on_submit():
             print("@@@")
             if current_user.user_profile.state == 'TX':
                 location_factor = 0.02
@@ -82,12 +84,18 @@ def new_quote():
 
             return render_template('create_quote.html', title='New Quote', form=form)
 
-        # return jsonify(data=form.errors)
+    # return jsonify(data=form.errors)
 
 
 @quotes.route("/quote/<int:quote_id>")
 @login_required
 def quote(quote_id):
     quote = Quote.query.get_or_404(quote_id)
+    form = QuoteForm()
+    form.gallons_requested.data = quote.gallons_requested
+    # form.date_requested.data = quote.date_requested
+    form.delivery_address.data = quote.delivery_address
+    form.suggested_price.data = quote.suggested_price
+    form.total_amount_due.data = quote.total_amount_due
 
-    return render_template('quote.html', title=quote.id, quote=quote)
+    return render_template('quote.html', title=quote.date_requested, form=form)
