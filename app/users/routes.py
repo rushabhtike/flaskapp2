@@ -78,16 +78,16 @@ def account():
         return render_template('account.html', title='Account', form=form)
 
 
-@users.route('/userhome/<string:username>')
+@users.route('/history')
 @login_required
-def user_home(username):
-    if current_user.username == username:
+def history():
+    #if current_user.username:
         page = request.args.get('page', 1, type=int)
-        user = User.query.filter_by(username=username).first_or_404()
+        user = User.query.filter_by(username=current_user.username).first_or_404()
         quotes = Quote.query.filter_by(author=user).paginate(page=page, per_page=5)
-        return render_template('user_home.html', quotes=quotes, user=user)
-    else:
-        return render_template('403.html'), 403
+        return render_template('history.html', quotes=quotes, user=user)
+    # else:
+    #     return render_template('403.html'), 403
 
 
 @users.route('/about')

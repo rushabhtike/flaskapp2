@@ -35,7 +35,7 @@ def new_quote():
             db.session.add(quote)
             db.session.commit()
             flash('Your quote has been saved', 'success')
-            return redirect(url_for('main.home'))
+            return redirect(url_for('users.history'))
         elif form.get_price.data:
             # if form.validate_on_submit():
             print("@@@")
