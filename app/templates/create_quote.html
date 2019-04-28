@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="content-section">
-    <form method="POST" action="">
+    <form method="POST" action="" id="myform">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">New Quote</legend>
@@ -28,7 +28,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.delivery_address(class="form-control form-control-lg") }}
+                {{ form.delivery_address(class="form-control form-control-lg", id="delivery_address") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -41,7 +41,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.date_requested(class="form-control form-control-lg") }}
+                {{ form.date_requested(class="form-control form-control-lg", id="date_requested") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -54,7 +54,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.suggested_price(class="form-control form-control-lg") }}
+                {{ form.suggested_price(class="form-control form-control-lg", id="suggested_price") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -89,16 +89,21 @@ $(document).ready(function(){
       return false;}
   });
 
-  var myInput = document.getElementById("total_amount_due");
-    if(myInput.value==""){
+  var gallons_requested = document.getElementById("number");
+  var delivery_address = document.getElementById("delivery_address");
+  var date_requested = document.getElementById("date_requested");
+  var suggested_price = document.getElementById("suggested_price");
+  var total_amount_due = document.getElementById("total_amount_due");
+    if(total_amount_due.value==""){
       $('#get_quote').attr("disabled", true);}
     else{
       $('#get_quote').removeAttr("disabled");}
 
-  $("#get_price").click(function(){
-  $('#get_quote').removeAttr("disabled");
+<!--  $("#get_price").click(function(){-->
+<!--  $('#get_quote').removeAttr("disabled");-->
+<!--});-->
 });
-});
+
 
 
 
