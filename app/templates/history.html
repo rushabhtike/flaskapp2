@@ -4,10 +4,10 @@
 {% for quote in quotes.items %}
 <article class="media content-section">
     <div class="media-body">
-        <h2><a class="article-title" href="{{ url_for('quotes.quote', quote_id=quote.id) }}">{{ quote.gallons_requested
-            }}</a>
-        </h2>
-        <h2><a class="article-title" href="#">{{ quote.date_requested }}</a></h2>
+        <h3><a class="article-title" href="{{ url_for('quotes.quote', quote_id=quote.id) }}">Date: {{ quote.date_requested
+            }}</a></h3>
+        <h3>Gallons: {{ quote.gallons_requested }}</h3>
+
 
     </div>
 </article>

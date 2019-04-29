@@ -83,25 +83,34 @@
 $(document).ready(function(){
 
   $("#number").keypress(function (e) {
-    //alert("going inside");
+
     if(e.which != 46 && e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 
       return false;}
   });
 
   var gallons_requested = document.getElementById("number");
-  var delivery_address = document.getElementById("delivery_address");
-  var date_requested = document.getElementById("date_requested");
-  var suggested_price = document.getElementById("suggested_price");
-  var total_amount_due = document.getElementById("total_amount_due");
-    if(total_amount_due.value==""){
-      $('#get_quote').attr("disabled", true);}
-    else{
-      $('#get_quote').removeAttr("disabled");}
 
-<!--  $("#get_price").click(function(){-->
-<!--  $('#get_quote').removeAttr("disabled");-->
-<!--});-->
+   var date_requested = document.getElementById("date_requested");
+
+    if(total_amount_due.value=="")
+      $('#get_quote').hide();
+    if(gallons_requested.value=="")
+       $('#get_quote').hide();
+
+     else
+      $('#get_quote').show()
+
+ $("#get_price").click(function(){
+   if(gallons_requested.value=="")
+    $("#get_quote").hide();
+   if(date_requested.value=="")
+      $("#get_quote").hide();
+   else {
+     $("#get_quote").show();
+   }
+
+});
 });
 
 
