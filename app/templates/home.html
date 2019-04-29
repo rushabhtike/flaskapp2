@@ -28,7 +28,7 @@
 
 #intro .intro-info h2 span {
   color: #74b5fc;
-  text-decoration: underline;
+
 }
 
 #intro .intro-info .btn-get-started,
@@ -79,10 +79,10 @@
   <div>
 
     {% if current_user.is_authenticated %}
-        <a href="{{ url_for('quotes.new_quote') }}" class="btn-get-started scrollto">Request Quote</a>
+        <a href="{{ url_for('quotes.new_quote') }}" class="btn-services scrollto">Request Quote</a>
         <a href="{{ url_for('users.history') }}" class="btn-services scrollto">Quote History</a>
     {% else %}
-        <a href="/login" class="btn-get-started scrollto">Get Started</a>
+        <a href="/login" class="btn-services scrollto">Get Started</a>
     {%endif%}
 
   </div>

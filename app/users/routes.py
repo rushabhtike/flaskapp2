@@ -70,7 +70,7 @@ def account():
             )
             db.session.add(user_profile)
             db.session.commit()
-            flash('Your profile has been saved', 'success')
+            #flash('Your profile has been saved', 'success')
             return redirect(url_for('main.home'))
         # elif request.method == 'GET':
         #     form.username.data = current_user.username

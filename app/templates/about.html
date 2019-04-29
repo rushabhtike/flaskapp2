@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="content-section">
-    <div class="media">
+<div class="content-section" style=" border-radius: 2px; box-shadow: 0 0 2px black; margin-top: 5px;">
+    <!-- <div class="media">
         <div class="media-body">
             <h2 class="account-heading">{{ current_user.username }}</h2>
             <p class="text-secondary">{{ current_user.email }}</p>
         </div>
-    </div>
+    </div> -->
     <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Account Info</legend>
+            <legend class="border-bottom mb-4">{{current_user.username }} <span style="float:right; color: #7F8388">{{ current_user.email }}</span></legend>
             <div class="form-group">
                 {{ form.full_name.label(class="form-control-label") }}
                 {% if form.full_name.errors %}

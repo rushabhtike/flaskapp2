@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-Please create a profile before requesting for a quote
-<div class="content-section">
-    <div class="media">
-        <div class="media-body">
-            <h2 class="account-heading">{{ current_user.username }}</h2>
-            <p class="text-secondary">{{ current_user.email }}</p>
-        </div>
-    </div>
+<h7 style="color:red;">You have to create a profile first</h7>
+<div class="content-section" style="border-radius: 2px; box-shadow: 0 0 2px black; margin-top: 5px;">
+<!--    &lt;!&ndash; <div class="media">-->
+<!--        <div class="media-body">-->
+<!--            &lt;!&ndash; <h2 class="account-heading">{{ current_user.username }}</h2> &ndash;&gt;-->
+<!--          &lt;!&ndash;  <p class="text-secondary">{{ current_user.email }}</p>-->
+<!--        </div>-->
+<!--    </div> &ndash;&gt;-->
     <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Account Info</legend>
+            <legend class="border-bottom mb-4">{{ current_user.username }}<span style="float:right;">{{ current_user.email }}</span></legend>
             <div class="form-group">
                 {{ form.full_name.label(class="form-control-label") }}
                 {% if form.full_name.errors %}

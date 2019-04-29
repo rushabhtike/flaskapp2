@@ -1,9 +1,7 @@
 from flask_wtf import FlaskForm
-from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, IntegerField, DateField, \
-    SelectField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, InputRequired
-from app.models import User, UserProfile
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, SelectField
+from wtforms.validators import Length, Email, EqualTo, InputRequired
+from app.models import User
 
 
 class RegistrationForm(FlaskForm):
@@ -54,6 +52,16 @@ class UpdateAccountForm(FlaskForm):
                ('VT', 'Vermont'),
                ('WA', 'Washington'), ('WI', 'Wisconsin'), ('WV', 'WestVirginia'), ('WY', 'Wyoming')]
     full_name = StringField('Full Name', validators=[InputRequired(), Length(max=50)])
+
+    def validate_full_name(self, full_name):
+        p = str(full_name.data)
+        print(p)
+
+        if not all(x.isalpha() or x.isspace() for x in p):
+            raise ValidationError('Please enter a valid name')
+        if p.isspace():
+            raise ValidationError('Please enter a valid name')
+
     address_one = StringField('Address 1', validators=[InputRequired(), Length(max=100)])
     address_two = StringField('Address 2', validators=[Length(max=100)])
     city = StringField('City', validators=[InputRequired(), Length(max=100)])
